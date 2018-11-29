@@ -1,0 +1,40 @@
+<ng-container *ngIf="editMode">
+  <div class="flex">
+    <input type="text"
+           matInput
+           required
+           [formControl]="listItemControl"
+           autocomplete="off"
+           placeholder="Add item">
+
+    <button mat-icon-button
+            type="submit"
+            (click)="add()"
+            [disabled]=listItemControl.invalid>
+      <mat-icon aria-label="Add item">add</mat-icon>
+    </button>
+
+
+  </div>
+</ng-container>
+
+
+<mat-selection-list (selectionChange)="toggleItemState($event)">
+
+  <mat-list-option *ngFor="let item of items"
+                   checkboxPosition="before"
+                   [value]="item"
+                   [selected]="item.complete">
+
+    <div class="flex flex-align--center">
+      <span [class.complete]="item.complete"
+            class="flex-g--1">{{item.value}}</span>
+
+      <button mat-icon-button
+              *ngIf="editMode"
+              (click)="remove.emit(item.id)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </mat-list-option>
+</mat-selection-list>

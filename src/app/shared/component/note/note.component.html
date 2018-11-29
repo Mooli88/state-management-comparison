@@ -1,0 +1,28 @@
+<mat-card class="note" [style.background]="color">
+  <mat-card-header>
+    <mat-card-title>{{ title | titlecase }}</mat-card-title>
+    <button
+      class="delete_note"
+      (click)="delete.emit(id)"
+      mat-button
+      matSuffix
+      mat-icon-button
+      aria-label="Delete"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+
+    <mat-card-subtitle>{{ lastModified | date }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-container *ngIf="!!content; else: list">
+      <p #contentEl [class]="contentDisplaySize + ' word-break'">{{ content }}</p>
+    </ng-container>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #list>
+  <div class="mask" #itemsEl><app-list-items [items]="items"></app-list-items></div>
+</ng-template>
+
+{{ count() }}

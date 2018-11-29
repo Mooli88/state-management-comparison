@@ -1,0 +1,84 @@
+<!-- Editor form -->
+
+<form [formGroup]="editorForm"
+      class="flex flex-column space-inset-top space-inset-bottom">
+
+  <div class="mat-headline">
+
+    <input matInput
+           autocomplete="off"
+           formControlName="title"
+           placeholder="Title">
+  </div>
+
+  <!-- Form content (text or List) -->
+  <ng-container *ngTemplateOutlet="isNewContent ? newContent : existingContent"></ng-container>
+
+
+  <!-- Text -->
+  <ng-template #contentText>
+    <textarea matInput
+              [class.textarea_default]="isNewContent"
+              [matTextareaAutosize]="!isNewContent"
+              matAutosizeMaxRows="4"
+              formControlName="content"
+              placeholder="Note content"></textarea>
+
+  </ng-template>
+
+  <!-- List -->
+  <ng-template #contentList>
+    <app-list-items [items]="items"
+                    [editMode]="true"
+                    (removeItem)="removeItem($event)"
+                    (addItem)="addItem($event)"
+                    (selectionChange)="setNewSelection($event)"></app-list-items>
+  </ng-template>
+
+  <!-- Existing content (no tabs) -->
+  <ng-template #existingContent>
+    <ng-container *ngTemplateOutlet="!!items.length ? contentList : contentText"></ng-container>
+  </ng-template>
+
+  <!-- New content -->
+
+  <ng-template #newContent>
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>notes</mat-icon>
+        </ng-template>
+
+        <ng-container *ngTemplateOutlet="contentText"></ng-container>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>format_list_bulleted</mat-icon>
+        </ng-template>
+
+        <ng-container *ngTemplateOutlet="contentList">
+        </ng-container>
+      </mat-tab>
+
+    </mat-tab-group>
+  </ng-template>
+</form>
+
+<div class="flex">
+  <!-- Color Palette -->
+  <app-color-palette class="color-palette"
+                     [selectedColor]="editorForm.get('color').value"
+                     (selectColor)="selectColor($event)"></app-color-palette>
+
+  <!-- Submit & Camcel buttons -->
+  <div class="flex flex-g--1 flex-row--reverse">
+
+    <button mat-button
+            (click)="submit()"
+            [disabled]="editorForm.invalid"
+            color="primary">Submit</button>
+
+    <button mat-button
+            (click)="closeEditor()">Cancel</button>
+  </div>

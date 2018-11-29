@@ -1,0 +1,190 @@
+@import '~@angular/cdk/overlay-prebuilt.css';
+
+%user-select-none {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+html,
+body {
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+p {
+  line-height: 1.5;
+}
+
+.mat-toolbar-row.main-toolbar {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+//Layout:
+.container {
+  width: 100%;
+  padding: 2rem 1.5em;
+}
+
+.type-align {
+  &--center {
+    text-align: center;
+  }
+}
+
+.space {
+  margin: 1rem 1em;
+
+  &-right {
+    margin-right: 1em;
+  }
+
+  &--double {
+    margin: 2rem 2em;
+  }
+
+  &--half {
+    margin: 0.5rem 0.5em;
+  }
+}
+
+.space-inset {
+  padding: 1rem 1em;
+
+  &-right {
+    padding-right: 1em;
+  }
+  &-bottom {
+    padding-bottom: 1em;
+  }
+
+  &-top {
+    padding-top: 1em;
+  }
+
+  &--double {
+    padding: 2rem 2em;
+  }
+
+  &--half {
+    padding: 0.5rem 0.5em;
+  }
+}
+
+.flex {
+  display: flex;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-row--reverse {
+  flex-direction: row-reverse;
+}
+.flex-column--reverse {
+  flex-direction: column-reverse;
+}
+
+.flex-g--narrow {
+  flex: 0;
+}
+.flex-g--quarter {
+  flex: 0.25;
+}
+.flex-g--half {
+  flex: 0.5;
+}
+.flex-g--1 {
+  flex: 1;
+}
+.flex-g--2 {
+  flex: 2;
+}
+.flex-align--center {
+  align-items: center;
+}
+.flex-justify--center {
+  justify-content: center;
+}
+.flex-justify--end {
+  justify-content: flex-end;
+}
+
+//components
+.tile-note .note {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  border-radius: 0;
+}
+
+//helperes
+.word-break {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.mask {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    @extend %user-select-none;
+    outline-style: none;
+  }
+
+  outline-style: none;
+  @extend %user-select-none;
+  cursor: pointer;
+  position: relative;
+}
+
+.float {
+  position: fixed;
+
+  &--right {
+    right: 0;
+  }
+
+  &--top {
+    right: 0;
+  }
+
+  &--bottom {
+    bottom: 0;
+  }
+
+  &--left {
+    right: 0;
+  }
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #0000006e;
+}

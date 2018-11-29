@@ -1,0 +1,31 @@
+.icon {
+  background-size: cover;
+  display: inline-block;
+
+  &-google {
+    background-image: url('../../../../assets/icons/icons8-google.svg');
+  }
+  &-github {
+    background-image: url('../../../../assets/icons/icons8-github.svg');
+  }
+  &-facebook {
+    background-image: url('../../../../assets/icons/icons8-facebook.svg');
+  }
+  &-twitter {
+    background-image: url('../../../../assets/icons/icons8-twitter.svg');
+  }
+
+  &--small {
+    height: 2em;
+    width: 2em;
+  }
+}
+
+button + .icon-facebook {
+  background-color: cornflowerblue;
+}
+
+.avatar {
+  background-size: cover;
+  margin: 0 1em;
+}

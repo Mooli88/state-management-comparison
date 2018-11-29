@@ -1,0 +1,45 @@
+@import '~@angular/material/theming';
+
+.color-palette__selection {
+  display: flex;
+  padding-right: 1em;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /* Hide the browser's default checkbox */
+  input {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    height: 0;
+    z-index: -99;
+    width: 0;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  input:checked ~ .selection__color {
+    transition: box-shadow 0.25s ease-out;
+    &:hover {
+      @include mat-elevation(4);
+    }
+  }
+
+  /* On mouse-over, add a grey background color */
+  // &:hover input ~ .checkmark {
+  //   background-color: #ccc;
+  // }
+}
+/* Create a custom checkbox */
+.selection__color {
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  background-color: #eee;
+}

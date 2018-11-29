@@ -1,0 +1,51 @@
+<ng-container *ngIf="(authService.user | async) as user; else: guest">
+  <button
+    class="avatar"
+    mat-icon-button
+    [style.background-image]="'url(' + user.photoURL + ')'"
+    [matMenuTriggerFor]="authMenu"
+  ></button>
+
+  <mat-menu #authMenu>
+    <div mat-menu-item>
+      <span>{{ user.email }}</span> <br />
+    </div>
+    <div mat-menu-item>
+      <span>{{ user.displayName }}</span>
+    </div>
+    <button mat-menu-item (click)="authService.logout()">Logout</button>
+  </mat-menu>
+</ng-container>
+
+<ng-template #guest>
+  <button class="avatar" mat-icon-button [matMenuTriggerFor]="guestMenu"><mat-icon>person</mat-icon></button>
+
+  <mat-menu #guestMenu>
+    <div mat-menu-item>
+      <button mat-flat-button class="mat-menu-panel" color="warn" (click)="authService.loginWith()">
+        <span class="icon icon--small icon-google"></span>
+        <!-- <span>Google</span> -->
+      </button>
+    </div>
+    <div mat-menu-item>
+      <button mat-flat-button class="mat-menu-panel" color="black" (click)="authService.loginWith('github')">
+        <span class="icon icon--small icon-github"></span>
+      </button>
+    </div>
+    <div mat-menu-item>
+      <button mat-flat-button class="mat-menu-panel" color="blue" (click)="authService.loginWith('facebook')">
+        <span class="icon icon--small icon-facebook"></span>
+      </button>
+    </div>
+    <div mat-menu-item>
+      <button
+        mat-flat-button
+        class="mat-menu-panel"
+        color="lightblue"
+        (click)="authService.loginWith('twitter')"
+      >
+        <span class="icon icon--small icon-twitter"></span>
+      </button>
+    </div>
+  </mat-menu>
+</ng-template>

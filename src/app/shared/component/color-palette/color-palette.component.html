@@ -1,0 +1,22 @@
+<label *ngFor="let color of colorPalette"
+       class="color-palette__selection">
+
+  <input type="radio"
+         name="note-color">
+
+  <span class="selection__color mat-elevation-z1"
+        matRipple
+        matRippleCentered="true"
+        matRippleColor="#51515124"
+        [style.background]="color"
+        (click)="setColor(color)"></span>
+</label>
+
+<label class="color-palette__selection">
+  <button mat-button
+          [style.background]="selectedColor"
+          mat-icon-button
+          (click)="setColor('')">
+    <mat-icon>close</mat-icon>
+  </button>
+</label>

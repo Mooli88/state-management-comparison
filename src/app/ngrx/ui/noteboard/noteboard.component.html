@@ -1,0 +1,22 @@
+<mat-grid-list
+  [cols]="(isHandset$ | async) ? gridSpec.minCol : gridSpec.maxCol"
+  [rowHeight]="gridSpec.rowHeight"
+  [gutterSize]="gridSpec.gutterSize"
+>
+  <mat-grid-tile
+    class="noteboard__tile mat-elevation-z4"
+    *ngFor="let note of (notes$ | async)"
+    [colspan]="1"
+    (click)="edit(note)"
+    [rowspan]="tileRowSpan[note.id] || gridSpec.rowspan"
+  >
+    <app-note class="tile-note" [noteService]="noteboardService" (delete)="delete($event)" [note]="note">
+    </app-note>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<span class="float float--right float--bottom space--double">
+  <button mat-fab (click)="openEditor()" color="primary">
+    <mat-icon aria-label="add note">add</mat-icon>
+  </button>
+</span>

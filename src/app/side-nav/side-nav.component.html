@@ -1,0 +1,25 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="akita/noteboard">Akita</a>
+
+      <a mat-list-item routerLink="ngrx/noteboard">NGRX</a>
+
+      <a routerLink="ngxs/noteboard" mat-list-item>NGXS</a>
+
+      <a routerLink="mobx/noteboard" mat-list-item>MOBX</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="overlay" *ngIf="isLoading"><mat-spinner #spinner diameter="50"></mat-spinner></div>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

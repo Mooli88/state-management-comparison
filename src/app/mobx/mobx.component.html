@@ -1,0 +1,24 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="main-toolbar flex flex-g--1 flex-align--center">
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button>
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+
+    <app-search
+      class="flex-g--2 type-align--center"
+      (search)="search($event)"
+      [placeholder]="'search note'"
+    ></app-search>
+
+    <span>MOBX</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<!-- Toolbar -->
+
+<!-- loading -->
+<mat-progress-bar *ngIf="isNoteLoading" color="accent" mode="indeterminate"></mat-progress-bar>
+
+<!-- Route -->
+
+<router-outlet></router-outlet>

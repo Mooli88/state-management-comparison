@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+
+:host {
+  display: block;
+  padding: 2rem 2em;
+}
+
+.noteboard__tile {
+  transition: box-shadow 0.5s ease-out;
+  &:hover {
+    @include mat-elevation(8);
+  }
+}
