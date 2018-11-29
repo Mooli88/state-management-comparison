@@ -1,5 +1,6 @@
 # About
-In progress Angular state management comparison
+In progress Angular state management comparison demonstrated by building a noteboard app.
+In this project, I've also include Storybook
 
 # StateManagementComparison
 
