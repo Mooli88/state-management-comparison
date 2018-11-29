@@ -1,4 +1,4 @@
-#About
+# About
 In progress Angular state management comparison
 
 # StateManagementComparison
